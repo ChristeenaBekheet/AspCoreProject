@@ -9,6 +9,7 @@ namespace RealEstate.Models
 {
     public enum PropertyType { Apartment , House , Land , SingelFamily, Bungalow, Villa}
     public enum PropertyStatus { ForSale, ForRent, Saled, Rented }
+    public enum Country { Egypt, Greece, UK, Turkey, Iraq, Spain, Iran, UAE }
 
     public class Property
     {
@@ -36,8 +37,19 @@ namespace RealEstate.Models
         [Range(1, 10)]
         public int Rooms { get; set; }
 
-        [Required(ErrorMessage = "Location field is required")]
-        public Location Location { get; set; }
+
+        [Required(ErrorMessage = "Address field is required")]
+        public string Address { get; set; }
+
+        public string State { get; set; }
+
+        [Required(ErrorMessage = "City field is required")]
+        public string City { get; set; }
+
+        public string Zip { get; set; }
+
+        [Required(ErrorMessage = "Country field is required")]
+        public Country Country { get; set; }
 
         [Required(ErrorMessage = "Bathrooms field is required")]
         [Range(1, 5)]
@@ -50,7 +62,7 @@ namespace RealEstate.Models
         [Required (ErrorMessage = "YearBuilt field is required")]
         public DateTime YearBuilt { get; set; }
 
-        public Image[] images { get; set; }
+        public ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
     }

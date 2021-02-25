@@ -47,20 +47,29 @@ namespace RealEstate.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Location",
+                name: "Property",
                 columns: table => new
                 {
-                    LocationID = table.Column<int>(nullable: false)
+                    PropertyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    Rooms = table.Column<int>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     State = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: false),
                     Zip = table.Column<string>(nullable: true),
-                    Country = table.Column<int>(nullable: false)
+                    Country = table.Column<int>(nullable: false),
+                    Bathrooms = table.Column<int>(nullable: false),
+                    AreaSize = table.Column<double>(nullable: false),
+                    YearBuilt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Location", x => x.LocationID);
+                    table.PrimaryKey("PK_Property", x => x.PropertyID);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,42 +179,14 @@ namespace RealEstate.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Property",
-                columns: table => new
-                {
-                    PropertyID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Type = table.Column<int>(nullable: false),
-                    Status = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
-                    Rooms = table.Column<int>(nullable: false),
-                    LocationID = table.Column<int>(nullable: false),
-                    Bathrooms = table.Column<int>(nullable: false),
-                    AreaSize = table.Column<double>(nullable: false),
-                    YearBuilt = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Property", x => x.PropertyID);
-                    table.ForeignKey(
-                        name: "FK_Property_Location_LocationID",
-                        column: x => x.LocationID,
-                        principalTable: "Location",
-                        principalColumn: "LocationID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Image",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ImageTitle = table.Column<string>(nullable: true),
-                    ImgData = table.Column<byte[]>(type: "image", nullable: true),
-                    PropertyID = table.Column<int>(nullable: true)
+                    ImgData = table.Column<string>(nullable: true),
+                    PropertyID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -215,7 +196,7 @@ namespace RealEstate.Migrations
                         column: x => x.PropertyID,
                         principalTable: "Property",
                         principalColumn: "PropertyID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -286,11 +267,6 @@ namespace RealEstate.Migrations
                 column: "PropertyID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Property_LocationID",
-                table: "Property",
-                column: "LocationID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Review_PropertyID",
                 table: "Review",
                 column: "PropertyID");
@@ -327,9 +303,6 @@ namespace RealEstate.Migrations
 
             migrationBuilder.DropTable(
                 name: "Property");
-
-            migrationBuilder.DropTable(
-                name: "Location");
         }
     }
 }

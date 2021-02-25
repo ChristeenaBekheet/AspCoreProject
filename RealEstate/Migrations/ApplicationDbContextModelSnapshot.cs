@@ -229,10 +229,10 @@ namespace RealEstate.Migrations
                     b.Property<string>("ImageTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ImgData")
-                        .HasColumnType("image");
+                    b.Property<string>("ImgData")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PropertyID")
+                    b.Property<int>("PropertyID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -242,9 +242,9 @@ namespace RealEstate.Migrations
                     b.ToTable("Image");
                 });
 
-            modelBuilder.Entity("RealEstate.Models.Location", b =>
+            modelBuilder.Entity("RealEstate.Models.Property", b =>
                 {
-                    b.Property<int>("LocationID")
+                    b.Property<int>("PropertyID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -253,6 +253,12 @@ namespace RealEstate.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("AreaSize")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Bathrooms")
+                        .HasColumnType("int");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -260,41 +266,17 @@ namespace RealEstate.Migrations
                     b.Property<int>("Country")
                         .HasColumnType("int");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Zip")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LocationID");
-
-                    b.ToTable("Location");
-                });
-
-            modelBuilder.Entity("RealEstate.Models.Property", b =>
-                {
-                    b.Property<int>("PropertyID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("AreaSize")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Bathrooms")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LocationID")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Rooms")
                         .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -309,9 +291,10 @@ namespace RealEstate.Migrations
                     b.Property<DateTime>("YearBuilt")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("PropertyID");
+                    b.Property<string>("Zip")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("LocationID");
+                    b.HasKey("PropertyID");
 
                     b.ToTable("Property");
                 });
@@ -402,22 +385,15 @@ namespace RealEstate.Migrations
             modelBuilder.Entity("RealEstate.Models.Image", b =>
                 {
                     b.HasOne("RealEstate.Models.Property", null)
-                        .WithMany("images")
-                        .HasForeignKey("PropertyID");
-                });
-
-            modelBuilder.Entity("RealEstate.Models.Property", b =>
-                {
-                    b.HasOne("RealEstate.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationID")
+                        .WithMany("Images")
+                        .HasForeignKey("PropertyID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("RealEstate.Models.Review", b =>
                 {
-                    b.HasOne("RealEstate.Models.Property", "Property")
+                    b.HasOne("RealEstate.Models.Property", null)
                         .WithMany("Reviews")
                         .HasForeignKey("PropertyID")
                         .OnDelete(DeleteBehavior.Cascade)

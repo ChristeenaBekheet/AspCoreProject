@@ -5698,19 +5698,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Christina Bekheet\\.nuget\\packages\\": {}
+    "C:\\Users\\Ahmed Nasr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ITI SD Intake 41\\ASP.Net MVC\\AspCore RealEstate\\RealEstate Solution\\RealEstate\\RealEstate.csproj",
+      "projectUniqueName": "E:\\ASP.NET\\Final Final\\RealEstate\\RealEstate.csproj",
       "projectName": "RealEstate",
-      "projectPath": "F:\\ITI SD Intake 41\\ASP.Net MVC\\AspCore RealEstate\\RealEstate Solution\\RealEstate\\RealEstate.csproj",
-      "packagesPath": "C:\\Users\\Christina Bekheet\\.nuget\\packages\\",
-      "outputPath": "F:\\ITI SD Intake 41\\ASP.Net MVC\\AspCore RealEstate\\RealEstate Solution\\RealEstate\\obj\\",
+      "projectPath": "E:\\ASP.NET\\Final Final\\RealEstate\\RealEstate.csproj",
+      "packagesPath": "C:\\Users\\Ahmed Nasr\\.nuget\\packages\\",
+      "outputPath": "E:\\ASP.NET\\Final Final\\RealEstate\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Christina Bekheet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ahmed Nasr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5718,7 +5718,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/nuget": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

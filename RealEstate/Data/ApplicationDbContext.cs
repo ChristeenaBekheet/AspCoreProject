@@ -12,10 +12,7 @@ namespace RealEstate.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
         }
-
-        public DbSet<Property> Properties;
-        public DbSet<Review> Reviews;
-        public DbSet<Location> Location { get; set; }
+        public DbSet<Image> Image { get; set; }
         public DbSet<Property> Property { get; set; }
         public DbSet<Review> Review { get; set; }
     }

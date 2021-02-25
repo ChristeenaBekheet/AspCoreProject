@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate.Models
 {
@@ -24,8 +25,7 @@ namespace RealEstate.Models
         [Required(ErrorMessage = "Rate Of The Review Is Required")]
         public string Rate { get; set; }
 
+        [ForeignKey("Property")]
         public virtual int PropertyID { get; set; }
-
-        public Property Property { get; set; }
     }
 }

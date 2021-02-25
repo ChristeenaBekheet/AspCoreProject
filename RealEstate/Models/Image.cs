@@ -14,7 +14,9 @@ namespace RealEstate.Models
 
         public string ImageTitle { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] ImgData { get; set; }
+        public string ImgData { get; set; }
+
+        [ForeignKey("Property")]
+        public virtual int PropertyID { get; set; }
     }
 }

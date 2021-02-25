@@ -22,6 +22,7 @@ namespace RealEstate.Controllers
         // GET: Properties
         public async Task<IActionResult> Index()
         {
+            ViewBag.Images = _context.Image.ToList();
             return View(await _context.Property.ToListAsync());
         }
 
